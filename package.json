@@ -1,0 +1,10 @@
+{
+    "name": "sima-madrasah",
+    "version": "1.0.0",
+    "description": "Sistem Informasi Manajemen Akses Madrasah",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {}
+}

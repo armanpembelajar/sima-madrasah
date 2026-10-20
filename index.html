@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIMA Madrasah Terintegrasi - MTs Ubudiyah Mantangai</title>
+    <style>
+        /* --- RESET & LAYOUT UTAMA --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: radial-gradient(circle at 50% 50%, #0f172a 0%, #020617 100%);
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            overflow-x: hidden;
+        }
+
+        /* --- CONTAINER KARTU GLASSMORPHISM PREMIUM --- */
+        .glass-card {
+            position: relative;
+            width: 100%;
+            max-width: 950px;
+            background: rgba(15, 23, 42, 0.45);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 24px;
+            padding: 3px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        /* ANIMASI CAHAYA NEON BERGULIR TANPA HENTI */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, #38bdf8, #22c55e, transparent 50%);
+            animation: rotateGlow 6s linear infinite;
+            z-index: 1;
+        }
+
+        .glass-card-inner {
+            position: relative;
+            background: #090d1a;
+            border-radius: 21px;
+            padding: 40px 30px;
+            z-index: 2;
+            text-align: center;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* --- DESAIN TEKS & HEADLINE --- */
+        h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8 0%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #38bdf8;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- NAVIGASI --- */
+        nav { margin-bottom: 40px; }
+        nav ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        nav a {
+            color: #94a3b8; text-decoration: none; padding: 10px 18px; border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem; font-weight: 500; transition: all 0.3s ease;
+        }
+        nav a:hover {
+            color: #ffffff; background: rgba(56, 189, 248, 0.15); border-color: #38bdf8;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.25); transform: translateY(-2px);
+        }
+        nav li:last-child a { background: rgba(52, 211, 153, 0.1); border-color: rgba(52, 211, 153, 0.3); color: #34d399; }
+        nav li:last-child a:hover { background: #34d399; color: #020617; box-shadow: 0 0 15px rgba(52, 211, 153, 0.4); }
+
+        /* --- WELCOME TEXT & CTA --- */
+        .welcome-box p { font-size: 1.2rem; line-height: 1.8; color: #cbd5e1; max-width: 750px; margin: 0 auto 35px auto; }
+        .quick-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 10px; }
+        .btn-link {
+            display: inline-block; padding: 12px 25px; border-radius: 14px; color: #fff; text-decoration: none;
+            font-weight: 600; font-size: 0.95rem; border: 1px solid rgba(56, 189, 248, 0.3);
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(34, 197, 94, 0.1) 100%); transition: all 0.3s ease;
+        }
+        .btn-link:hover {
+            background: linear-gradient(135deg, #38bdf8 0%, #22c55e 100%); color: #020617;
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.3); transform: translateY(-2px);
+        }
+
+        /* --- SEKSI TAMBAHAN BAWAH (LANDING PAGE SECTIONS) --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 950px;
+            margin-top: 10px;
+        }
+
+        .sub-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Statistik Angka */
+        .stat-flex { display: flex; justify-content: space-around; text-align: center; margin-top: 15px; }
+        .stat-item big { font-size: 1.8rem; font-weight: 800; color: #34d399; display: block; }
+        .stat-item span { font-size: 0.85rem; color: #94a3b8; }
+
+        /* Daftar List Berita */
+        .news-list { list-style: none; text-align: left; margin-top: 10px; }
+        .news-list li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.95rem; color: #cbd5e1; }
+        .news-list li:last-child { border: none; }
+        .news-list small { color: #64748b; display: block; margin-top: 2px; }
+
+        footer { margin-top: 50px; color: #475569; font-size: 0.85rem; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. HERO SECTION (KARTU UTAMA DENGAN CAHAYA BERGULIR) -->
+    <div class="glass-card">
+        <div class="glass-card-inner">
+            <header>
+                <h1>SIMA MADRASAH TERINTEGRASI</h1>
+                <h2>MTs Ubudiyah Mantangai</h2>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="profil.html">Profil</a></li>
+                        <li><a href="visi-misi.html">Visi - Misi</a></li>
+                        <li><a href="berita.html">Berita</a></li>
+                        <li><a href="galeri.html">Galeri</a></li>
+                        <li><a href="spmb.html">SPMB</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                        <li><a href="masuk.html">Masuk</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <main>
+                <div class="welcome-box">
+                    <p>Tempat anak-anak belajar, membentuk karakter akhlakul karimah, berdaya saing IPTEK, berwawasan luas, serta berguna bagi agama, bangsa, dan negara.</p>
+                </div>
+                <div class="quick-links">
+                    <a href="spmb.html" class="btn-link">Informasi SPMB</a>
+                    <a href="profil.html" class="btn-link">Kenali Madrasah Kami</a>
+                    <a href="cek-ijazah.html" class="btn-link">Cek Ijazah</a>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- 2. DATA GRID BAWAH (MEMBUAT HALAMAN MEMANJANG DAN KAYA KONTEN) -->
+    <div class="info-grid">
+        
+        <!-- Seksi Data / Statistik -->
+        <div class="sub-card">
+            <h3>Data Madrasah</h3>
+            <p style="color: #94a3b8; font-size: 0.9rem;">Madrasah dalam Angka saat ini:</p>
+            <div class="stat-flex">
+                <div class="stat-item"><big>7-9</big><span>Jenjang Kelas</span></div>
+                <div class="stat-item"><big>Aktif</big><span>Status SIMA</span></div>
+                <div class="stat-item"><big>Swasta</big><span>Tipe Instansi</span></div>
+            </div>
+        </div>
+
+        <!-- Seksi Berita & Pengumuman Terbaru -->
+        <div class="sub-card">
+            <h3>Berita & Artikel</h3>
+            <ul class="news-list">
+                <li>
+                    Pemutakhiran Data Madrasah pada Simsarpras Tahun 2026
+                    <small>Januari 25, 2026</small>
+                </li>
+                <li>
+                    Agenda Madrasah Internal & Pengumuman
+                    <small>Belum ada agenda terdekat.</small>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Seksi Lokasi / Hubungi Kami -->
+        <div class="sub-card" style="grid-column: span 1;">
+            <h3>Lokasi Kami</h3>
+            <p style="color: #cbd5e1; font-size: 0.9rem; line-height: 1.5; margin-bottom: 10px;">
+                Jl. Muslimin RT.008/RW.- Mantangai Hilir, Mantangai, Kapuas, Kalimantan Tengah 73553.
+            </p>
+            <p style="font-size: 0.8rem; color: #64748b;">Menerima pendaftaran peserta didik baru melalui tautan SPMB.</p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 MTs Ubudiyah Mantangai. Hak cipta dilindungi.</p>
+    </footer>
+
+</body>
+</html>
